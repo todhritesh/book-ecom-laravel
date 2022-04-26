@@ -1,4 +1,4 @@
-@extends('component.base')
+@extends('customer.components.base')
 
 @section('page-subheader')
 <section class="breadcrumb-option">

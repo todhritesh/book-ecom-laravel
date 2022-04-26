@@ -32,11 +32,11 @@
     </div>
 
     <!-- Offcanvas Menu Begin -->
-        @include('component.sidebar')
+        @include('customer.components.sidebar')
     <!-- Offcanvas Menu End -->
 
     <!-- Header Section Begin -->
-    @include('component.header')
+    @include('customer.components.header')
     <!-- Header Section End -->
 
     <!-- Breadcrumb Section Begin -->

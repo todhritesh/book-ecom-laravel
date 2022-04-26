@@ -3,29 +3,36 @@
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('customer.welcome');
 })->name('home');
 
 Route::get('/shop',function(){
-    return view('shop');
+    return view('customer.shop');
 })->name('shop');
 
 Route::get('/product_details',function(){
-    return view('product_details');
+    return view('customer.product_details');
 })->name('product_details');
 
 Route::get('/cart',function(){
-    return view('cart');
+    return view('customer.cart');
 })->name('cart');
 
 Route::get('/about_us',function(){
-    return view('about_us');
+    return view('customer.about_us');
 })->name('about_us');
 
 Route::get('/contact_us',function(){
-    return view('contact_us');
+    return view('customer.contact_us');
 })->name('contact_us');
 
 Route::get('/checkout',function(){
-    return view('checkout');
+    return view('customer.checkout');
 })->name('checkout');
+
+
+Route::get('/dashboard', function () {
+    return view('dashboard');
+})->middleware(['auth'])->name('dashboard');
+
+require __DIR__.'/auth.php';
