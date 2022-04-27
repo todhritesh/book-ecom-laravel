@@ -11,7 +11,7 @@
                     <div class="header__top__right">
                         <div class="header__top__links">
                             <a href="#">Sign in</a>
-                            <a href="#">Sing up</a>
+                            <a href="#">Sign up</a>
                         </div>
                     </div>
                 </div>
@@ -22,7 +22,7 @@
         <div class="row">
             <div class="col-lg-3 col-md-3">
                 <div class="header__logo">
-                    <a href="./index.html"><img src="img/logo.png" alt=""></a>
+                    <a href="{{ route('home') }}"><img src="img/logo.png" alt=""></a>
                 </div>
             </div>
             <div class="col-lg-6 col-md-6">
@@ -31,7 +31,7 @@
                         <li class="@php echo Route::current()->getName() === "home" ? "active":null; @endphp" ><a href="{{route("home")}}">Home</a></li>
                         <li class="@php echo Route::current()->getName() === "shop" ? "active":null; @endphp" ><a href="{{route("shop")}}">Shop</a></li>
                         <li class="@php echo Route::current()->getName() === "about_us" ? "active":null; @endphp" ><a href="{{route("about_us")}}">About Us</a></li>
-                        <li class="@php echo Route::current()->getName() === "contact_us" ? "active":null; @endphp" ><a href="{{route('contact_us')}}">Contacts</a></li>
+                        <li class="@php echo Route::current()->getName() === "contact_us" ? "active":null; @endphp" ><a href="{{route('contact_us')}}">Contact Us</a></li>
                     </ul>
                 </nav>
             </div>
