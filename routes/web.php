@@ -31,6 +31,11 @@ Route::get('/checkout',function(){
 })->name('checkout');
 
 
+Route::get('/admin/home',function(){
+    return view('admin.index');
+})->name('checkout');
+
+
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth'])->name('dashboard');
