@@ -1,8 +1,13 @@
 <?php
 
+use App\Models\Category;
+use App\Models\CategoryProduct;
+use App\Models\Product;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
+    return CategoryProduct::with('category','product')->get();
+
     return view('customer.welcome');
 })->name('home');
 
