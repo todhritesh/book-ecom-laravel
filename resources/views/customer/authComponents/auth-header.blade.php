@@ -10,8 +10,8 @@
                 <div class="col-lg-6 col-md-5">
                     <div class="header__top__right">
                         <div class="header__top__links">
-                            <a href="#">Sign in</a>
-                            <a href="#">Sign up</a>
+                            <a href="{{route('signin')}}">Sign in</a>
+                            <a href="{{route('signup')}}">Sign up</a>
                         </div>
                     </div>
                 </div>

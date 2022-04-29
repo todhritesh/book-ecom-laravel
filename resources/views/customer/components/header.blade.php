@@ -10,8 +10,16 @@
                 <div class="col-lg-6 col-md-5">
                     <div class="header__top__right">
                         <div class="header__top__links">
-                            <a href="#">Sign in</a>
-                            <a href="#">Sign up</a>
+                            @auth
+                                <form class="d-inline" action="{{route('logout')}}" method="Post">
+                                    @csrf
+                                    <input type="submit" value="SIGN OUT" style="font-size:13px;background-color:transparent;color:#ffffff">
+                                </form>
+                            @endauth
+                            @guest
+                                <a href="{{route('signin')}}">Sign in</a>
+                                <a href="{{route('signup')}}">Sign up</a>
+                            @endguest
                         </div>
                     </div>
                 </div>
