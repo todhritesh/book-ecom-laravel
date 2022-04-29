@@ -1,0 +1,8 @@
+.stop-hover :hover {
+    opacity: 1!important;
+    color:black!important;
+}
+.stop-hover {
+    opacity: 1!important;
+    color:#6c757d!important;
+}

@@ -68,28 +68,38 @@
                 </div>
             </div>
             <div class="row product__filter">
-                <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
-                    <div class="product__item">
-                        <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
-                            <span class="label">New</span>
-                            <ul class="product__hover">
-                                <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                            </ul>
-                        </div>
-                        <div class="product__item__text">
-                            <h6>Piqué Biker Jacket</h6>
-                            <a href="#" class="add-cart">+ Add To Cart</a>
-                            {{-- <div class="rating">
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star"></i>
-                                <i class="fa fa-star-o"></i>
-                            </div> --}}
-                            <h5>$67.24</h5>
+                @foreach ($products as $p)
+                    <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
+                        <a href="{{route('shop.product_details',['pid'=>$p->product_id])}}" class="stretched-link"></a>
+                        <div class="product__item">
+                            <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
+                                <span class="label">New</span>
+                                <ul class="product__hover">
+                                    <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
+                                </ul>
+                            </div>
+                            <div class="product__item__text">
+                                <h6 class="fs-5">{{$p->product[0]->pro_title}}</h6>
+                                <a href="#" class="add-cart">+ Add To Cart</a>
+                                <h5>Discount : {{$p->product[0]->pro_discount_price}} %</h5>
+                                <h5 class="h6 text-success">
+                                    @php
+                                        $discounted_price = ($p->product[0]->pro_price * (100-$p->product[0]->pro_discount_price))/100;
+                                    @endphp
+                                    Price : ₹ {{$discounted_price}}
+                                    <span class="text-danger text-decoration-line-through ms-2" >&nbsp; ₹ {{$p->product[0]->pro_price}} &nbsp;</span>
+                                </h5>
+                            </div>
+                            <h5 class="text-secondary small">Category :
+                                @foreach ($categories as $c)
+                                    @if ($p->product_id === $c->product_id)
+                                        <a href="" class="stop-hover">{{$c->category[0]->cat_title}}&nbsp;</a>
+                                    @endif
+                                @endforeach
+                            </h5>
                         </div>
                     </div>
-                </div>
+                @endforeach
             </div>
         </div>
     </section>

@@ -29,7 +29,7 @@
                 <nav class="header__menu mobile-menu">
                     <ul>
                         <li class="@php echo Route::current()->getName() === "home" ? "active":null; @endphp" ><a href="{{route("home")}}">Home</a></li>
-                        <li class="@php echo Route::current()->getName() === "shop" ? "active":null; @endphp" ><a href="{{route("shop")}}">Shop</a></li>
+                        <li class="@php echo Route::current()->getName() === "shop.index" ? "active":null; @endphp" ><a href="{{route("shop.index")}}">Shop</a></li>
                         <li class="@php echo Route::current()->getName() === "about_us" ? "active":null; @endphp" ><a href="{{route("about_us")}}">About Us</a></li>
                         <li class="@php echo Route::current()->getName() === "contact_us" ? "active":null; @endphp" ><a href="{{route('contact_us')}}">Contact Us</a></li>
                     </ul>

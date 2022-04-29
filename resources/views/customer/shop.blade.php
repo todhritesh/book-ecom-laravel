@@ -2,25 +2,24 @@
 
 
 @section('page-subheader')
-<section class="breadcrumb-option">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-12">
-                <div class="breadcrumb__text">
-                    <h4>Shop</h4>
-                    <div class="breadcrumb__links">
-                        <a href="{{route('home')}}">Home</a>
-                        <span>Shop</span>
+    <section class="breadcrumb-option">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="breadcrumb__text">
+                        <h4>Shop</h4>
+                        <div class="breadcrumb__links">
+                            <a href="{{ route('home') }}">Home</a>
+                            <span>Shop</span>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-</section>
+    </section>
 @endsection
 
 @section('main-section')
-
     <!-- Shop Section Begin -->
     <section class="shop spad">
         <div class="container">
@@ -46,22 +45,40 @@
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-lg-4 col-md-6 col-sm-6">
-                            {{-- <div class="product__item "> --}}
-                            <div class="product__item sale">
-                                <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
-                                    <span class="label">Sale</span>
-                                    <ul class="product__hover">
-                                        <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
-                                    </ul>
-                                </div>
-                                <div class="product__item__text">
-                                    <h6>Multi-pocket Chest Bag</h6>
-                                    <a href="#" class="add-cart">+ Add To Cart</a>
-                                    <h5>$43.48</h5>
+                        @foreach ($products as $p)
+                            <div class="col-lg-4 col-md-6 col-sm-6">
+                                {{-- <div class="product__item "> --}}
+                                <a href="{{route('shop.product_details',['pid'=>$p->product_id])}}" class="stretched-link"></a>
+                                <div class="product__item sale">
+                                    <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
+                                        <span class="label">Sale</span>
+                                        <ul class="product__hover">
+                                            <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="product__item__text">
+                                        <h6 class="fs-5">{{ $p->product[0]->pro_title }}</h6>
+                                        <a href="#" class="add-cart">+ Add To Cart</a>
+                                        <h5>Discount : {{ $p->product[0]->pro_discount_price }} %</h5>
+                                        <h5 class="h6 text-success">
+                                            @php
+                                                $discounted_price = ($p->product[0]->pro_price * (100 - $p->product[0]->pro_discount_price)) / 100;
+                                            @endphp
+                                            Price : ₹ {{ $discounted_price }}
+                                            <span class="text-danger text-decoration-line-through ms-2">&nbsp; ₹
+                                                {{ $p->product[0]->pro_price }} &nbsp;</span>
+                                        </h5>
+                                    </div>
+                                    <h5 class="text-secondary small">Category :
+                                        @foreach ($categories as $c)
+                                            @if ($p->product_id === $c->product_id)
+                                                <a href="" class="stop-hover">{{$c->category[0]->cat_title}}&nbsp;</a>
+                                            @endif
+                                        @endforeach
+                                    </h5>
                                 </div>
                             </div>
-                        </div>
+                        @endforeach
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
@@ -79,5 +96,4 @@
         </div>
     </section>
     <!-- Shop Section End -->
-
 @endsection

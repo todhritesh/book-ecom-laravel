@@ -1,23 +1,24 @@
 <?php
 
-use App\Models\Category;
-use App\Models\CategoryProduct;
-use App\Models\Product;
+use App\Http\Controllers\HomeController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\ShopController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return CategoryProduct::with('category','product')->get();
 
-    return view('customer.welcome');
-})->name('home');
 
-Route::get('/shop',function(){
-    return view('customer.shop');
-})->name('shop');
 
-Route::get('/product_details',function(){
-    return view('customer.product_details');
-})->name('product_details');
+// home
+Route::get('/', [HomeController::class,'index'])->name('home');
+Route::get('/shop', [ShopController::class,'index'])->name('shop.index');
+Route::get('/product_details/{pid?}', [ShopController::class,'product_details'])->name('shop.product_details');
+
+
+
+
+// Route::get('/product_details',function(){
+//     return view('customer.product_details');
+// })->name('product_details');
 
 Route::get('/cart',function(){
     return view('customer.cart');
