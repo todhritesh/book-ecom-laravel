@@ -28,15 +28,12 @@
             <div class="col-lg-6 col-md-6">
                 <nav class="header__menu mobile-menu">
                     <ul>
-                        <li class="@php echo Route::current()->getName() === "home" ? "active":null; @endphp" ><a href="{{route("home")}}">Home</a></li>
-                        <li class="@php echo Route::current()->getName() === "shop.index" ? "active":null; @endphp" ><a href="{{route("shop.index")}}">Shop</a></li>
-                        <li class="@php echo Route::current()->getName() === "shop.index" ? "active":null; @endphp" ><a href="{{route("shop.index")}}">Categories</a></li>
-                        <li class="@php echo Route::current()->getName() === "about_us" ? "active":null; @endphp" ><a href="{{route("about_us")}}">About Us</a></li>
-                        <li class="@php echo Route::current()->getName() === "contact_us" ? "active":null; @endphp" ><a href="{{route('contact_us')}}">Contact Us</a></li>
+                        {{-- <li class="@php echo Route::current()->getName() === "home" ? "active":null; @endphp" ><a href="{{route("home")}}">Home</a></li> --}}
+
                     </ul>
                 </nav>
             </div>
-            <div class="col-lg-3 col-md-3">
+            {{-- <div class="col-lg-3 col-md-3">
                 <div class="header__nav__option">
                     <a href="#" class="search-switch"><img src="{{asset('customer/img/icon/search.png')}}" alt=""></a>
                     <a href="#"><img src="{{asset('customer/img/icon/heart.png')}}" alt=""></a>
@@ -47,7 +44,7 @@
                     </a>
                     <div class="price">$0.00</div>
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div class="canvas__open"><i class="fa fa-bars"></i></div>
     </div>

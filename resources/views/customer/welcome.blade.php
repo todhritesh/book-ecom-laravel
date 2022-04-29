@@ -9,7 +9,7 @@
     <!-- Hero Section Begin -->
     <section class="hero">
         <div class="hero__slider owl-carousel">
-            <div class="hero__items set-bg" data-setbg="img/hero/hero-1.jpg">
+            <div class="hero__items set-bg" data-setbg="{{asset('customer/img/hero/hero-1.jpg')}}">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-5 col-lg-7 col-md-8">
@@ -30,7 +30,7 @@
                     </div>
                 </div>
             </div>
-            <div class="hero__items set-bg" data-setbg="img/hero/hero-2.jpg">
+            <div class="hero__items set-bg" data-setbg="{{asset('customer/img/hero/hero-2.jpg')}}">
                 <div class="container">
                     <div class="row">
                         <div class="col-xl-5 col-lg-7 col-md-8">
@@ -70,12 +70,12 @@
             <div class="row product__filter">
                 @foreach ($products as $p)
                     <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
-                        <a href="{{route('shop.product_details',['pid'=>$p->product_id])}}" class="stretched-link"></a>
                         <div class="product__item">
-                            <div class="product__item__pic set-bg" data-setbg="img/product/product-1.jpg">
+                            <a href="{{route('shop.product_details',['pid'=>$p->product_id])}}" class="stretched-link"></a>
+                            <div class="product__item__pic set-bg" data-setbg="{{asset('customer/img/product/product-1.jpg')}}">
                                 <span class="label">New</span>
                                 <ul class="product__hover">
-                                    <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
+                                    <li><a href="#"><img src="{{asset('customer/img/icon/heart.png')}}" alt=""></a></li>
                                 </ul>
                             </div>
                             <div class="product__item__text">
@@ -116,7 +116,7 @@
                 </div>
                 <div class="col-lg-4">
                     <div class="categories__hot__deal">
-                        <img src="img/product-sale.png" alt="">
+                        <img src="{{asset('customer/img/product-sale.png')}}" alt="">
                         <div class="hot__deal__sticker">
                             <span>Sale Of</span>
                             <h5>$29.99</h5>
@@ -159,12 +159,12 @@
             <div class="row">
                 <div class="col-lg-8">
                     <div class="instagram__pic">
-                        <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-1.jpg"></div>
-                        <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-2.jpg"></div>
-                        <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-3.jpg"></div>
-                        <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-4.jpg"></div>
-                        <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-5.jpg"></div>
-                        <div class="instagram__pic__item set-bg" data-setbg="img/instagram/instagram-6.jpg"></div>
+                        <div class="instagram__pic__item set-bg" data-setbg="{{asset('customer/img/instagram/instagram-1.jpg')}}"></div>
+                        <div class="instagram__pic__item set-bg" data-setbg="{{asset('customer/img/instagram/instagram-2.jpg')}}"></div>
+                        <div class="instagram__pic__item set-bg" data-setbg="{{asset('customer/img/instagram/instagram-3.jpg')}}"></div>
+                        <div class="instagram__pic__item set-bg" data-setbg="{{asset('customer/img/instagram/instagram-4.jpg')}}"></div>
+                        <div class="instagram__pic__item set-bg" data-setbg="{{asset('customer/img/instagram/instagram-5.jpg')}}"></div>
+                        <div class="instagram__pic__item set-bg" data-setbg="{{asset('customer/img/instagram/instagram-6.jpg')}}"></div>
                     </div>
                 </div>
                 <div class="col-lg-4">
@@ -194,9 +194,9 @@
             <div class="row">
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-1.jpg"></div>
+                        <div class="blog__item__pic set-bg" data-setbg="{{asset('customer/img/blog/blog-1.jpg')}}"></div>
                         <div class="blog__item__text">
-                            <span><img src="img/icon/calendar.png" alt=""> 16 February 2020</span>
+                            <span><img src="{{asset('customer/img/icon/calendar.png')}}" alt=""> 16 February 2020</span>
                             <h5>What Curling Irons Are The Best Ones</h5>
                             <a href="#">Read More</a>
                         </div>
@@ -204,9 +204,9 @@
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-2.jpg"></div>
+                        <div class="blog__item__pic set-bg" data-setbg="{{asset('customer/img/blog/blog-2.jpg')}}"></div>
                         <div class="blog__item__text">
-                            <span><img src="img/icon/calendar.png" alt=""> 21 February 2020</span>
+                            <span><img src="{{asset('customer/img/icon/calendar.png')}}" alt=""> 21 February 2020</span>
                             <h5>Eternity Bands Do Last Forever</h5>
                             <a href="#">Read More</a>
                         </div>
@@ -214,9 +214,9 @@
                 </div>
                 <div class="col-lg-4 col-md-6 col-sm-6">
                     <div class="blog__item">
-                        <div class="blog__item__pic set-bg" data-setbg="img/blog/blog-3.jpg"></div>
+                        <div class="blog__item__pic set-bg" data-setbg="{{asset('customer/img/blog/blog-3.j')}}pg"></div>
                         <div class="blog__item__text">
-                            <span><img src="img/icon/calendar.png" alt=""> 28 February 2020</span>
+                            <span><img src="{{asset('customer/img/icon/calendar.png')}}" alt=""> 28 February 2020</span>
                             <h5>The Health Benefits Of Sunglasses</h5>
                             <a href="#">Read More</a>
                         </div>

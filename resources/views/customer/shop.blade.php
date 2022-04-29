@@ -48,12 +48,12 @@
                         @foreach ($products as $p)
                             <div class="col-lg-4 col-md-6 col-sm-6">
                                 {{-- <div class="product__item "> --}}
-                                <a href="{{route('shop.product_details',['pid'=>$p->product_id])}}" class="stretched-link"></a>
-                                <div class="product__item sale">
-                                    <div class="product__item__pic set-bg" data-setbg="img/product/product-3.jpg">
+                                    <div class="product__item sale">
+                                        <div class="product__item__pic set-bg" data-setbg="{{asset('customer/img/product/product-3.jpg')}}">
+                                            <a href="{{route('shop.product_details',['pid'=>$p->product_id])}}" class="stretched-link"></a>
                                         <span class="label">Sale</span>
                                         <ul class="product__hover">
-                                            <li><a href="#"><img src="img/icon/heart.png" alt=""></a></li>
+                                            <li><a href="#"><img src="{{asset('customer/img/icon/heart.png')}}" alt=""></a></li>
                                         </ul>
                                     </div>
                                     <div class="product__item__text">

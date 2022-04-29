@@ -16,9 +16,9 @@ Route::get('/product_details/{pid?}', [ShopController::class,'product_details'])
 
 
 
-// Route::get('/product_details',function(){
-//     return view('customer.product_details');
-// })->name('product_details');
+Route::get('/signin',function(){
+    return view('customer.signin');
+})->name('signin');
 
 Route::get('/cart',function(){
     return view('customer.cart');

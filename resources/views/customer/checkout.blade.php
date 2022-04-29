@@ -9,7 +9,7 @@
                     <h4>Check Out</h4>
                     <div class="breadcrumb__links">
                         <a href="{{route(('home'))}}">Home</a>
-                        <a href="{{route(('shop'))}}">Shop</a>
+                        <a href="{{route(('shop.index'))}}">Shop</a>
                         <span>Check Out</span>
                     </div>
                 </div>
