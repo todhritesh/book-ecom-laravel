@@ -2,8 +2,12 @@
 <div class="offcanvas-menu-wrapper">
     <div class="offcanvas__option">
         <div class="offcanvas__links">
-            <a href="#">Sign in</a>
-            <a href="#">Sing up</a>
+            <a href="{{route('signin')}}">Sign in</a>
+            <a href="{{route('signup')}}">Sing up</a>
+            <form class="d-inline" action="{{route('logout')}}" method="Post">
+                @csrf
+                <input type="submit" value="SIGN OUT" style="font-size:13px;background-color:transparent;color:#ffffff">
+            </form>
         </div>
     </div>
     <div class="offcanvas__nav__option">

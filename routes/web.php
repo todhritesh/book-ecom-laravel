@@ -4,6 +4,7 @@ use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ShopController;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 
@@ -25,8 +26,16 @@ Route::prefix("admin")->group(function(){
 
 
 Route::get('/signin',function(){
+    if(Auth::user())
+        return redirect()->back();
     return view('customer.signin');
 })->name('signin');
+
+Route::get('/signup',function(){
+    if(Auth::user())
+        return redirect()->back();
+    return view('customer.signup');
+})->name('signup');
 
 Route::get('/cart',function(){
     return view('customer.cart');
