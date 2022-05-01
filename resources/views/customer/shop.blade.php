@@ -21,6 +21,7 @@
 
 @section('main-section')
     <!-- Shop Section Begin -->
+
     <section class="shop spad">
         <div class="container">
             <div class="row">
@@ -58,7 +59,8 @@
                                     </div>
                                     <div class="product__item__text">
                                         <h6 class="fs-5">{{ $p->product[0]->pro_title }}</h6>
-                                        <a href="#" class="add-cart">+ Add To Cart</a>
+                                        <input class="pid" type="hidden" value="{{$p->product_id}}">
+                                        <a onclick="add_to_cart({{$p->product_id}})" href="javascript:void(0);" class="add-cart">+ Add To Cart</a>
                                         <h5>Discount : {{ $p->product[0]->pro_discount_price }} %</h5>
                                         <h5 class="h6 text-success">
                                             @php
@@ -96,4 +98,8 @@
         </div>
     </section>
     <!-- Shop Section End -->
+@endsection
+
+@section('js')
+    @include('customer.components.add-to-cart-ajax')
 @endsection

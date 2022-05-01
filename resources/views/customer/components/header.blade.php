@@ -10,12 +10,17 @@
                 <div class="col-lg-6 col-md-5">
                     <div class="header__top__right">
                         <div class="header__top__links">
-                            @auth
-                                <form class="d-inline" action="{{route('logout')}}" method="Post">
-                                    @csrf
-                                    <input type="submit" value="SIGN OUT" style="font-size:13px;background-color:transparent;color:#ffffff">
-                                </form>
-                            @endauth
+                            <div class="dropdown">
+                                @auth
+                                    <button style="font-size:13px;background-color:transparent;color:#ffffff" class="dropdown-toggle" data-bs-toggle="dropdown"><i class="bi bi-person me-2"></i>{{auth()->user()->name}}</button>
+                                    <ul class="dropdown-menu">
+                                        <form class="d-inline" action="{{route('logout')}}" method="Post">
+                                            @csrf
+                                            <input class="dropdown-item" type="submit" value="SIGN OUT" style="font-size:13px;background-color:transparent;color:black">
+                                        </form>
+                                    </ul>
+                                @endauth
+                            </div>
                             @guest
                                 <a href="{{route('signin')}}">Sign in</a>
                                 <a href="{{route('signup')}}">Sign up</a>
@@ -48,7 +53,7 @@
                 <div class="header__nav__option">
                     <a href="#" class="search-switch"><img src="{{asset('customer/img/icon/search.png')}}" alt=""></a>
                     <a href="#"><img src="{{asset('customer/img/icon/heart.png')}}" alt=""></a>
-                    <a  class="position-relative d-inline-block"  href="{{route('cart')}}"><img src="{{asset('customer/img/icon/cart.png')}}"alt="">
+                    <a  class="position-relative d-inline-block"  href="{{route('show_cart')}}"><img src="{{asset('customer/img/icon/cart.png')}}"alt="">
                         <span class="position-absolute translate-middle badge rounded-pill" style="background-color:#f3f2ee;left:20px;top:-5px">
                             99+
                         </span>

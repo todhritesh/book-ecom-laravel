@@ -71,8 +71,8 @@
                 @foreach ($products as $p)
                     <div class="col-lg-3 col-md-6 col-sm-6 col-md-6 col-sm-6 mix new-arrivals">
                         <div class="product__item">
-                            <a href="{{route('shop.product_details',['pid'=>$p->product_id])}}" class="stretched-link"></a>
                             <div class="product__item__pic set-bg" data-setbg="{{asset('customer/img/product/product-1.jpg')}}">
+                                <a href="{{route('shop.product_details',['pid'=>$p->product_id])}}" class="stretched-link"></a>
                                 <span class="label">New</span>
                                 <ul class="product__hover">
                                     <li><a href="#"><img src="{{asset('customer/img/icon/heart.png')}}" alt=""></a></li>
@@ -80,7 +80,7 @@
                             </div>
                             <div class="product__item__text">
                                 <h6 class="fs-5">{{$p->product[0]->pro_title}}</h6>
-                                <a href="#" class="add-cart">+ Add To Cart</a>
+                                <a onclick="add_to_cart({{$p->product_id}})" href="javascript:void(0);" class="add-cart">+ Add To Cart</a>
                                 <h5>Discount : {{$p->product[0]->pro_discount_price}} %</h5>
                                 <h5 class="h6 text-success">
                                     @php
@@ -227,4 +227,7 @@
     </section>
     <!-- Latest Blog Section End -->
 
+@endsection
+@section('js')
+    @include('customer.components.add-to-cart-ajax')
 @endsection
