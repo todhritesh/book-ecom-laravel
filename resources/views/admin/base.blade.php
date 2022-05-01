@@ -65,7 +65,7 @@
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
                                     <a class="nav-link small" href="{{ route('admin.add_book') }}">Add a Book</a>
-                                    <a class="nav-link small" href="layout-sidenav-light.html">Manage Books</a>
+                                    <a class="nav-link small" href="{{ route('admin.manage_books') }}">Manage Books</a>
                                 </nav>
                             </div>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapsePages" aria-expanded="false" aria-controls="collapsePages">
@@ -79,7 +79,7 @@
                                         Add a Genre
                                     </a>
                                     
-                                    <a class="nav-link small" href="#">
+                                    <a class="nav-link small" href="">
                                         Manage Genres
                                     </a>
                                     {{-- <div class="collapse" id="pagesCollapseError" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordionPages">

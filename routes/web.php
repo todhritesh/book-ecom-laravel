@@ -18,8 +18,12 @@ Route::get('/product_details/{pid?}', [ShopController::class,'product_details'])
 
 Route::prefix("admin")->group(function(){
     Route::get("/home",[AdminController::class,"index"])->name("admin.index");
-    Route::match(['post','get'],"/add-book",[AdminController::class,"add_book"])->name("admin.add_book");
+    Route::match(['post','get'],"/add/book",[AdminController::class,"add_book"])->name("admin.add_book");
     Route::post("/add/category",[AdminController::class,"add_category"])->name("admin.add_category");
+    Route::get("/manage/books",[AdminController::class,"manage_books"])->name("admin.manage_books");
+    Route::match(['patch','get'],"/edit/book/{id?}",[AdminController::class,"edit_book"])->name("admin.edit_book");
+    Route::delete("/delete/book",[AdminController::class,"delete_book"])->name("admin.delete_book");
+
 });
 
 

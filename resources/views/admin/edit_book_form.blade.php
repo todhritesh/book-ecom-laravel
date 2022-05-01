@@ -20,12 +20,15 @@
                     <p class="lead fs-2 mb-1">Add a Book</p>
                     <hr class="mt-0">
 
-                    <form action="{{ route('admin.add_book') }}" method="post" enctype="multipart/form-data">
+                    <form action="{{ route('admin.edit_book') }}" method="post" enctype="multipart/form-data">
                         @csrf
+                        @method("PATCH")
+
+                        <input type="hidden" name="pro_id" value="{{$book->id}}">
                         {{-- <div class="row"> --}}
                             <div class="mb-3 col">
                                 <label for="">Title</label>
-                                <input type="text" name="pro_title" id="" class="form-control @error('pro_title') is-invalid @enderror" value="{{old('pro_title')}}" placeholder="Eg. The Fault In Our Stars">
+                                <input type="text" name="pro_title" class="form-control @error('pro_title') is-invalid @enderror" value="{{$book->pro_title}}" placeholder="Eg. The Fault In Our Stars">
                                 @error('pro_title')
                                 <p class="small text-danger">{{$message}}</p>
                             @enderror
@@ -34,7 +37,7 @@
                             
                             <div class="mb-3 col">
                                 <label for="">Author</label>
-                                <input type="text" name="pro_author" id="" class="form-control @error('pro_author') is-invalid @enderror" value="{{old('pro_author')}}" placeholder="Eg. John Green">
+                                <input type="text" name="pro_author" id="" class="form-control @error('pro_author') is-invalid @enderror" value="{{$book->pro_author}}" placeholder="Eg. John Green">
                                 @error('pro_author')
                                 <p class="small text-danger">{{$message}}</p>
                             @enderror
@@ -49,9 +52,8 @@
                                     {{-- <label for="">Genre</label> --}}
                                     <a href="#dropCat" class="btn btn-dark" style="width:100%" data-bs-toggle="dropdown">Select Genres</a>
                                     <select name="category[]" id="dropCat" class="form-select dropdown-menu" multiple="multiple">
-                                        <option value="" disabled selected>Select a Genre</option>
                                         @foreach ($category as $cat)
-                                        <option value="{{$cat->id}}">{{$cat->cat_title}}</option>
+                                        <option value="{{$cat->id}}" @if (in_array($cat->id,$selected_cat)) {{'selected'}} @endif>{{$cat->cat_title}}</option>
                                         @endforeach
                                     </select>
                                     @error('category')
@@ -62,7 +64,7 @@
                                 
                                 <div class="mb-3 col">
                                     <label for="">Original Price</label>
-                                    <input type="text" name="pro_price" value="{{old('pro_price')}}" class="form-control @error('pro_price') is-invalid @enderror" placeholder="Eg. 299">
+                                    <input type="text" name="pro_price" value="{{$book->pro_price}}" class="form-control @error('pro_price') is-invalid @enderror" placeholder="Eg. 299">
                                     @error('pro_price')
                                     <p class="small text-danger">{{$message}}</p>
                                 @enderror
@@ -71,7 +73,7 @@
                                 
                                 <div class="mb-3 col">
                                     <label for="">Discount Price</label>
-                                    <input type="text" name="pro_discount_price" value="{{old('pro_discount_price')}}" class="form-control @error('pro_discount_price') is-invalid @enderror" placeholder="Eg. 265">
+                                    <input type="text" name="pro_discount_price" value="{{$book->pro_discount_price}}" class="form-control @error('pro_discount_price') is-invalid @enderror" placeholder="Eg. 265">
                                     @error('pro_discount_price')
                                     <p class="small text-danger">{{$message}}</p>
                                 @enderror
@@ -83,7 +85,7 @@
                             <div class="row">
                                 <div class="col mb-3">
                                     <label for="">ISBN</label>
-                                    <input type="text" name="pro_isbn" class="form-control @error('pro_isbn') is-invalid @enderror" value="{{old('pro_isbn')}}" placeholder="Eg. 123456765" id="">
+                                    <input type="text" name="pro_isbn" class="form-control @error('pro_isbn') is-invalid @enderror" value="{{$book->pro_isbn}}" placeholder="Eg. 123456765" id="">
                                     @error('pro_isbn')
                                     <p class="small text-danger">{{$message}}</p>
                                 @enderror
@@ -92,13 +94,30 @@
                                 
                                 <div class="col mb-3">
                                     <label for="">Pages</label>
-                                    <input type="number" name="pro_pages" class="form-control @error('pro_pages') is-invalid @enderror" value="{{old('pro_pages')}}" placeholder="Eg. 563" id="">
+                                    <input type="number" name="pro_pages" class="form-control @error('pro_pages') is-invalid @enderror" value="{{$book->pro_pages}}" placeholder="Eg. 563" id="">
                                     @error('pro_pages')
                                     <p class="small text-danger">{{$message}}</p>
                                 @enderror
                                 </div>
 
                                 
+                            </div>
+                            
+                            <div class="mb-3">
+                                <label for="">Chosen Image(s):-</label><br>
+                                <img src="{{ asset('product_images/'.$book->pro_image) }}" style="width: 50px" class="me-5" alt="">
+                                @if ($book->pro_image1 != null)
+                                    <img src="{{ asset('product_images/'.$book->pro_image1) }}" style="width: 50px;" class="me-5" alt="">
+                                @endif
+                                @if ($book->pro_image2 != null)
+                                    <img src="{{ asset('product_images/'.$book->pro_image2) }}" style="width: 50px;" class="me-5" alt="">
+                                @endif
+                                @if ($book->pro_image3 != null)
+                                    <img src="{{ asset('product_images/'.$book->pro_image3) }}" style="width: 50px;" class="me-5" alt="">
+                                @endif
+                                @if ($book->pro_image4 != null)
+                                    <img src="{{ asset('product_images/'.$book->pro_image4) }}" style="width: 50px;" class="me-5" alt="">
+                                @endif
                             </div>
 
                             <div class="row">
@@ -123,7 +142,7 @@
                             <div class="row">
                                 <div class="mb-3 col-7">
                                     <label for="">Publisher</label>
-                                    <input type="text" name="pro_publisher" value="{{old('pro_publisher')}}"  class="form-control @error('pro_publisher') is-invalid @enderror" placeholder="Eg. Penguin Publishers">
+                                    <input type="text" name="pro_publisher" value="{{$book->pro_publisher}}"  class="form-control @error('pro_publisher') is-invalid @enderror" placeholder="Eg. Penguin Publishers">
                                     @error('pro_publisher')
                                     <p class="text-danger small">{{$message}}</p>
                                 @enderror
@@ -133,7 +152,7 @@
 
                                 <div class=" mb-3 col">
                                     <label for="">Quantity</label>
-                                    <input type="number" name="pro_qty" value="{{old('pro_qty')}}" placeholder="Eg. 67" class="form-control @error('pro_qty') is-invalid @enderror">
+                                    <input type="number" name="pro_qty" value="{{$book->pro_qty}}" placeholder="Eg. 67" class="form-control @error('pro_qty') is-invalid @enderror">
                                     @error('pro_qty')
                                     <p class="text-danger small">{{$message}}</p>
                                 @enderror
@@ -145,7 +164,7 @@
                             <div class="row">
                                 <div class="mb-3 col-7">
                                     <label for="">Language</label>
-                                    <input type="text" name="pro_language" value="{{old('pro_language')}}" placeholder="Eg. English" class="form-control @error('pro_language') is-invalid @enderror">
+                                    <input type="text" name="pro_language" value="{{$book->pro_language}}" placeholder="Eg. English" class="form-control @error('pro_language') is-invalid @enderror">
                                     @error('pro_language')
                                     <p class="text-danger small">{{$message}}</p>
                                 @enderror
@@ -155,7 +174,7 @@
 
                                 <div class=" mb-3 col">
                                     <label for="">Edition</label>
-                                    <input type="number" name="pro_edition" placeholder="Eg. 1/2/3..." class="form-control @error('pro_edition') is-invalid @enderror">
+                                    <input type="number" name="pro_edition" value="{{$book->pro_edition}}" placeholder="Eg. 1/2/3..." class="form-control @error('pro_edition') is-invalid @enderror">
                                     @error('pro_edition')
                                     <p class="text-danger small">{{$message}}</p>
                                 @enderror
@@ -166,14 +185,14 @@
 
                             <div class="mb-3">
                                 <label for="">Description</label>
-                                <textarea name="pro_description" rows="5" class="form-control @error('pro_description') is-invalid @enderror" value="{{old('pro_description')}}" placeholder="Give the description of book here"></textarea>
+                                <textarea name="pro_description" rows="5" class="form-control @error('pro_description') is-invalid @enderror"  placeholder="Give the description of book here">{{$book->pro_description}}</textarea>
                                 @error('pro_description')
                                         <p class="text-danger small">{{$message}}</p>
                                     @enderror
                             </div>
 
                             <div class="mb-3">
-                                <input type="submit" value="ADD BOOK" class="btn btn-primary w-100">
+                                <input type="submit" value="UPDATE BOOK" class="btn btn-primary w-100">
                             </div>
                     </form>
                 {{-- </div> --}}
