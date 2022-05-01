@@ -157,6 +157,18 @@ return [
     |
     */
 
-    'attributes' => [],
+    'attributes' => [
+        'pro_title' => "Product Title",
+        'pro_price' => "Product Price",
+        'pro_discount_price' => "Product Discount Price",
+        'pro_isbn' => "ISBN Number",
+        'pro_pages' => "Page Numbers",
+        'pro_author' => "Author",
+        'pro_publisher' => "Publisher",
+        'pro_language' => "Language",
+        'pro_edition' => "Edition",
+        'pro_image' => "Product Image",
+        'pro_description' => "Product Description",
+    ],
 
 ];

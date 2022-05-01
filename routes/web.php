@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\OrderController;
 use App\Http\Controllers\ShopController;
@@ -25,6 +26,17 @@ Route::get("/add_to_cart/{pid?}",[OrderController::class,"add_to_cart"])->name('
 Route::get("/minus_cart_product/{pid?}",[OrderController::class,"minus_cart_product"])->name('minus_cart_product');
 //show cart
 Route::get("show_cart",[OrderController::class,"show_cart"])->name('show_cart');
+
+Route::prefix("admin")->group(function(){
+    Route::get("/home",[AdminController::class,"index"])->name("admin.index");
+    Route::match(['post','get'],"/add/book",[AdminController::class,"add_book"])->name("admin.add_book");
+    Route::post("/add/category",[AdminController::class,"add_category"])->name("admin.add_category");
+    Route::get("/manage/books",[AdminController::class,"manage_books"])->name("admin.manage_books");
+    Route::match(['patch','get'],"/edit/book/{id?}",[AdminController::class,"edit_book"])->name("admin.edit_book");
+    Route::delete("/delete/book",[AdminController::class,"delete_book"])->name("admin.delete_book");
+
+});
+
 
 
 
@@ -60,9 +72,6 @@ Route::get('/checkout',function(){
 })->name('checkout');
 
 
-Route::get('/admin/home',function(){
-    return view('admin.index');
-})->name('checkout');
 
 
 Route::get('/dashboard', function () {
